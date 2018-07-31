@@ -1,0 +1,154 @@
+/**
+ * author Viktor Shkuratov
+ * date 31/07/2018
+ * Java 1 HomeWork 6
+ * link https://github.com/ViktorSever
+ * test Java https://geekbrains.ru/users/3082903
+ */
+public class JavaSixthHomeWork {
+
+    public static void main(String [] args) {
+        Dog dog = new Dog("Sharik", 10);
+        Cat cat = new Cat("Pushok", 10);
+        //test for dog
+        System.out.println(dog.toString());
+        dog.run(-5);
+        dog.run(150);
+        dog.run(500);
+        dog.run(501);
+
+        dog.jump(-5);
+        dog.jump(0.2f);
+        dog.jump(0.5f);
+        dog.jump(1);
+
+        dog.swim(-5);
+        dog.jump(5);
+        dog.jump(9);
+        dog.jump(11);
+        System.out.println();
+        //test for cat
+        System.out.println(cat.toString());
+        cat.run(-5);
+        cat.run(150);
+        cat.run(200);
+        cat.run(201);
+
+        cat.jump(-5);
+        cat.jump(3f);
+        cat.jump(5);
+        cat.jump(6);
+
+        cat.swim(-5);
+        cat.jump(5);
+        cat.jump(9);
+        cat.jump(11);
+
+    }
+
+    interface Action {
+        void run (int length);
+        void jump (float height);
+        void swim(int length);
+    }
+
+    abstract static class Animal implements Action {
+        private String name;
+        private int age;
+
+        public Animal (String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        @Override
+        public String toString() {
+            return this.name + ", " + age;
+        }
+    }
+
+    public static class Dog extends Animal {
+
+        public Dog(String name, int age) {
+            super(name, age);
+        }
+
+        @Override
+        public void run(int length) {
+            if (length >= 0) {
+                if (length > 500) {
+                    System.out.println(Dog.class.getSimpleName() + ".run " + "false" );
+                } else {
+                    System.out.println(Dog.class.getSimpleName() + ".run " + "true" );
+                }
+            }else {
+                System.out.println(Dog.class.getSimpleName() + ".run " + "length must be >= 0" );
+            }
+        }
+
+        @Override
+        public void jump(float height) {
+            if (height >= 0) {
+                if (height > 0.5) {
+                    System.out.println(Dog.class.getSimpleName() + ".jump " + "false" );
+                } else {
+                    System.out.println(Dog.class.getSimpleName() + ".jump " + "true" );
+                }
+            }else {
+                System.out.println(Dog.class.getSimpleName() + ".jump " + "height must be >= 0" );
+            }
+        }
+
+        @Override
+        public void swim(int length) {
+            if (length >= 0) {
+                if (length >10) {
+                    System.out.println(Dog.class.getSimpleName() + ".swim " + "false" );
+                } else {
+                    System.out.println(Dog.class.getSimpleName() + ".swim " + "true" );
+                }
+            }else {
+                System.out.println(Dog.class.getSimpleName() + ".swim " + "length must be >= 0" );
+            }
+        }
+    }
+
+    public static class Cat extends Animal {
+
+        public Cat(String name, int age) {
+            super(name, age);
+        }
+
+        @Override
+        public void run(int length) {
+            if (length >= 0) {
+                if (length > 200) {
+                    System.out.println(Cat.class.getSimpleName() + ".run " + "false" );
+                } else {
+                    System.out.println(Cat.class.getSimpleName() + ".run " + "true" );
+                }
+            }else {
+                System.out.println(Cat.class.getSimpleName() + ".run " + "length must be >= 0" );
+            }
+        }
+
+        @Override
+        public void jump(float height) {
+            if (height >= 0) {
+                if (height > 2) {
+                    System.out.println(Cat.class.getSimpleName() + ".jump " + "false" );
+                } else {
+                    System.out.println(Cat.class.getSimpleName() + ".jump " + "true" );
+                }
+            }else {
+                System.out.println(Cat.class.getSimpleName() + ".jump " + "height must be >= 0" );
+            }
+        }
+
+        @Override
+        public void swim(int length) {
+            System.out.println(Cat.class.getSimpleName() + ".swim " + "false" );
+        }
+    }
+
+}
